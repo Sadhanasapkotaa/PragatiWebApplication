@@ -1,10 +1,14 @@
 package com.example.pragatia;
 
 import java.io.*;
+
+import Model.User;
+import UserService.UserService;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-@WebServlet(name = "helloServlet", value = "/hello-servlet")
+@WebServlet(name = "helloServlet", urlPatterns = "/user")
 public class HelloServlet extends HttpServlet {
     private String message;
 
@@ -15,11 +19,18 @@ public class HelloServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
 
-        // Hello
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<h1>" + message + "</h1>");
-        out.println("</body></html>");
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/html");
+
+
+        User user = new User();
+        user.setName(req.getParameter("username"));
+        user.setPassword(req.getParameter("password"));
+
+        new UserService().insertUser(user);
     }
 
     public void destroy() {

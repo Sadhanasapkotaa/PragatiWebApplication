@@ -7,10 +7,17 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<h1>Dashboard</h1>
+<h1>Welcome <%= session.getAttribute("firstname") %>
+
+<%--    <a href="/PragatiA_war_exploded/Pages/User/userList.jsp">userlist</a>--%>
+    <form action="../../PragatiA_war_exploded/childrenservlet?page=childrenList" method="post">
+        <button type="submit">get user list</button>
+    </form>
+
+</body>
 </html>

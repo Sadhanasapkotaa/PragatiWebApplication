@@ -7,10 +7,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+<head>
+    <title>Pragati | Admin Dashboard</title>
+</head>
+<body>
+<h1>Dashboard</h1>
+<h1>Welcome <%= session.getAttribute("fullname") %>
+
+</body>
 </html>
