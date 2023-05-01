@@ -1,4 +1,5 @@
 package Service;
+
 import DBConnection.DBConnection;
 import Model.Children;
 
@@ -10,8 +11,8 @@ import java.util.List;
 
 public class ChildrenService {
 
-//    Insert Children Or Registration
-    public void insertChildren(Children child){
+    //    Insert Children Or Registration
+    public void insertChildren(Children child) {
         String query = "INSERT INTO `children`(`firstname`, `lastname`, `email`, `dob`, `password`, `checkbox`)" + " VALUES(?,?,?,?,?,?) ";
 
 //      PreparedStatement
@@ -35,7 +36,7 @@ public class ChildrenService {
 
     }
 
-//    Login Children Details into Database
+    //    Login Children Details into Database
     public Children getChildren(String email, String password) {
 
         Children child = null;
@@ -69,34 +70,32 @@ public class ChildrenService {
     }
 
 
+    //    Get the list of children
+    public List<Children> getChildrenList() {
+        List<Children> childrenList = new ArrayList<>();
+        String query = "select * from children";
+        System.out.println(query);
+        PreparedStatement pstm = new DBConnection().getStatement(query);
+        try {
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                Children child = new Children();
 
+                child.setId(rs.getInt("id"));
+                child.setFirstname(rs.getString("firstname"));
+                child.setLastname(rs.getString("lastname"));
+                child.setEmail(rs.getString("email"));
+                child.setDob(rs.getString("dob"));
+                child.setPassword(rs.getString("password"));
 
-//    Get the list of children
-public List<Children> getChildrenList() {
-    List<Children> childrenList = new ArrayList<>();
-    String query = "select * from children";
-    System.out.println(query);
-    PreparedStatement pstm = new DBConnection().getStatement(query);
-    try {
-        ResultSet rs = pstm.executeQuery();
-        while (rs.next()) {
-            Children child = new Children();
-
-            child.setId(rs.getInt("id"));
-            child.setFirstname(rs.getString("firstname"));
-            child.setLastname(rs.getString("lastname"));
-            child.setEmail(rs.getString("email"));
-            child.setDob(rs.getString("dob"));
-            child.setPassword(rs.getString("password"));
-
-            childrenList.add(child);
+                childrenList.add(child);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
 
-    return childrenList;
-}
+        return childrenList;
+    }
 
 }
 

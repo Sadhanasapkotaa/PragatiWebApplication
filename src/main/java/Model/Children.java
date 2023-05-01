@@ -11,6 +11,7 @@ public class Children {
     private String password;
     private boolean checkbox;
 
+
 //  The private variables ends here
 
 

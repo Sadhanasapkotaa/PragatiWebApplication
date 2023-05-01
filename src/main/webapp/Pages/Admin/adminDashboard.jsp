@@ -13,7 +13,10 @@
 </head>
 <body>
 <h1>Dashboard</h1>
-<h1>Welcome <%= session.getAttribute("fullname") %>
+<h1>Welcome <%= session.getAttribute("fullname") %></h1>
+<h1>Welcome <%= session.getAttribute("myname") %></h1>
+<h1>Welcome <%= session.getAttribute("stripeid") %></h1>
+
 
 </body>
 </html>

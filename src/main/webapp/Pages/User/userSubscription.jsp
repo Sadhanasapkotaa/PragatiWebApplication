@@ -36,17 +36,23 @@
             <p class="pHeading">Starter Plan</p>
             <p class="pPrice">Rs. 0</p>
             <p class="pDesc">This plan includes all learning features but doesn’t have features like themes, avatars, etc.</p>
-            <form action="../../childrenservlet?page=register" method="POST">
+            <form action="../../PragatiA_war_exploded/childrenservlet?page=payment" method="POST">
+                <input type="hidden" value="0" name="price"  />
                 <button type="submit" class="subscribeButton">SUBSCRIBE</button>
             </form>
-
         </div>
 
         <div class="card" id="card2">
             <p class="pHeading">Monthly Plan</p>
             <p class="pPrice">Rs. 25</p>
             <p class="pDesc">This plan includes the complete subscription of all features of this app for an entire month.</p>
-            <button type="submit" class="subscribeButton">SUBSCRIBE</button>
+            <form action="../../PragatiA_war_exploded/childrenservlet?page=payment" method="POST">
+                <input type="hidden" value="25" name="price" />
+                <input type="hidden" value="Monthly Plan" name="plan" />
+                <input type="hidden" value="<%= session.getAttribute("stripeid") %>" name="customerId" />
+                <input type="hidden" value="<%= session.getAttribute("uuid") %>" name="uuid" />
+                <button type="submit" class="subscribeButton">SUBSCRIBE</button>
+            </form>
         </div>
 
         <div class="card" id="card3">

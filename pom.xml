@@ -66,11 +66,16 @@
         <dependency>
             <groupId>com.stripe</groupId>
             <artifactId>stripe-java</artifactId>
-            <version>22.17.0-beta.2</version>
+            <version>22.13.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.stripe</groupId>
+            <artifactId>stripe-java</artifactId>
+            <version>22.13.0</version>
         </dependency>
 
 
-<!--        <dependency>-->
+        <!--        <dependency>-->
 <!--            <groupId>jstl</groupId>-->
 <!--            <artifactId>jstl</artifactId>-->
 <!--            <version>1.2</version>-->

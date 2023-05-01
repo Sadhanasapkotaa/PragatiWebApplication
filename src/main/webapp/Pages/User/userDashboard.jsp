@@ -13,6 +13,8 @@
 <body>
 <h1>Dashboard</h1>
 <h1>Welcome <%= session.getAttribute("firstname") %>
+    <h1>Welcome <%= session.getAttribute("myname") %></h1>
+    <h1>Welcome <%= session.getAttribute("stripeid") %></h1>
 
 <%--    <a href="/PragatiA_war_exploded/Pages/User/userList.jsp">userlist</a>--%>
     <form action="../../PragatiA_war_exploded/childrenservlet?page=childrenList" method="post">
