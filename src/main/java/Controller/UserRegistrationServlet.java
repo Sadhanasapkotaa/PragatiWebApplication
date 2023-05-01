@@ -48,7 +48,7 @@ public class UserRegistrationServlet extends HttpServlet {
             new ChildrenService().insertChildren(child);
 
 //          Redirect to Index.jsp
-            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("Pages/User/userDashboard.jsp");
             rd.forward(request, response);
         }
 
@@ -91,9 +91,9 @@ public class UserRegistrationServlet extends HttpServlet {
         if (action.equalsIgnoreCase("childrenList"))
         {
             Children child = new Children();
-            List<Children> childrenList = new ChildrenService().getChildrenList();
-            request.setAttribute("childrenList", child);
-            request.setAttribute("child", childrenList);
+            List<Children> childList = new ChildrenService().getChildrenList();
+            request.setAttribute("childList", childList);
+            request.setAttribute("child", child);
             RequestDispatcher rd = request.getRequestDispatcher("Pages/User/userList.jsp");
             rd.forward(request, response);
         }
