@@ -61,7 +61,6 @@ public class UserRegistrationServlet extends HttpServlet {
             customerParams.put("email", request.getParameter("email"));
 
 
-
 //            Create a session for registration and redirect directly to Dashboard after Registration
 
             if (child != null) {
@@ -74,8 +73,7 @@ public class UserRegistrationServlet extends HttpServlet {
                 Customer stripeCustomer = new Customer();
                 try {
                     stripeCustomer = Customer.create(customerParams);
-                }
-                catch (CardException e) {
+                } catch (CardException e) {
                     // Transaction failure
                 } catch (RateLimitException e) {
                     // Too many requests made to the API too quickly
@@ -97,13 +95,12 @@ public class UserRegistrationServlet extends HttpServlet {
                 session.setAttribute("stripeid", myId);
 
 
-
                 System.out.println(session.getAttribute("user"));
 
                 request.setAttribute("msg", "Login Successful!");
                 System.out.println(request.getAttribute("msg"));
 
-                RequestDispatcher rd = request.getRequestDispatcher("Pages/User/userSubscription.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/Pages/User/userSubscription.jsp");
                 rd.forward(request, response);
             } else {
 
@@ -151,10 +148,8 @@ public class UserRegistrationServlet extends HttpServlet {
         }
 
 
-
 //        List Users
-        if (action.equalsIgnoreCase("childrenList"))
-        {
+        if (action.equalsIgnoreCase("childrenList")) {
             Children child = new Children();
             List<Children> childList = new ChildrenService().getChildrenList();
             request.setAttribute("childList", childList);
@@ -164,7 +159,7 @@ public class UserRegistrationServlet extends HttpServlet {
         }
 
 //        Payment
-        if (action.equalsIgnoreCase("payment")){
+        if (action.equalsIgnoreCase("payment")) {
 
             // Stripe requires the charge amount to be in cents
 
@@ -188,12 +183,14 @@ public class UserRegistrationServlet extends HttpServlet {
                 // Invalid parameters were supplied to Stripe's API
             } catch (AuthenticationException e) {
                 // Authentication with Stripe's API failed (wrong API key?)
-            }  catch (StripeException e) {
+            } catch (StripeException e) {
                 // Generic error
             } catch (Exception e) {
                 // Something else happened unrelated to Stripe
             }
 
         }
+
     }
+
 }
